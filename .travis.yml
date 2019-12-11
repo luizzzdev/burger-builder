@@ -1,0 +1,22 @@
+language: node_js
+
+node_js:
+  - 10
+
+jobs:
+  include:
+    - stage: test
+      script:
+        - npm run test
+    - stage: build
+      script:
+        - npm run build
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        commiter_from_gh: true
+        github_token: $GITHUB_TOKEN
+        on:
+          branch: master
+        target_branch: gh-pages
+        local_dir: build
