@@ -1,0 +1,29 @@
+.Order {
+  width: 100%;
+}
+
+.Price {
+  text-align: center;
+}
+
+.Ingredients {
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 3px #ccc;
+  border: 2px solid #eee;
+  margin: 10px auto;
+  width: 50%;
+}
+
+
+@media (min-width: 1000px) {
+  .Order {
+    width: 33%;
+  }
+
+  .Ingredients {
+    width: 80%;
+  }
+}
+
+

@@ -1,8 +1,17 @@
 import { Api } from './api';
 
 export const OrdersService = {
-  get(params) {
-    return Api.get('/orders.json', { params });
+  async get(params) {
+    const response = await Api.get('/orders.json', { params });
+
+    return Object.keys(response.data).reduce((orders, orderId) => {
+      const order = {
+        ...response.data[orderId],
+        id: orderId,
+      };
+      orders.push(order);
+      return orders;
+    }, []);
   },
   post(body) {
     return Api.post('/orders.json', body);

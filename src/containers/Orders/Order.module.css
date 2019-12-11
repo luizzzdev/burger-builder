@@ -1,0 +1,17 @@
+.Orders {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.OrdersTitle {
+  text-align: center;
+}
+
+@media (min-width: 1000px) {
+  .Orders {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
