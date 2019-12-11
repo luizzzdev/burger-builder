@@ -1,7 +1,7 @@
 import React from 'react';
 import { Burger } from '../../Burger/Burger';
 import { Button } from '../../UI/Button/Button';
-import styles from './CheckoutSummary.module.css';
+import styles from './CheckoutSummary.module.scss';
 
 export const CheckoutSummary = ({
   ingredients,
@@ -19,10 +19,10 @@ export const CheckoutSummary = ({
       <div style={burgerStyle}>
         <Burger ingredients={ingredients} />
       </div>
-      <Button success clicked={onCheckoutCanceled}>
+      <Button danger clicked={onCheckoutCanceled}>
         CANCEL
       </Button>
-      <Button danger clicked={onCheckoutContinued}>
+      <Button success clicked={onCheckoutContinued}>
         CONTINUE
       </Button>
     </div>

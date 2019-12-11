@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { OrdersService } from '../../services/orders';
 import { Order } from '../../components/Order/Order';
-import classes from './Order.module.css';
+import classes from './Order.module.scss';
 
 export const Orders = () => {
   const [orders, setOrders] = useState([]);

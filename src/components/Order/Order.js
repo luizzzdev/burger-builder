@@ -1,6 +1,6 @@
 import React from 'react';
 import { Burger } from '../Burger/Burger';
-import classes from './Order.module.css';
+import classes from './Order.module.scss';
 
 export const Order = ({ order }) => {
   return (

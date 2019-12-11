@@ -1,17 +1,38 @@
 import React, { useState } from 'react';
-import classes from './ContactData.module.css';
+import classes from './ContactData.module.scss';
 import { Button } from '../../../components/UI/Button/Button';
 import { OrdersService } from '../../../services/orders';
 import { Spinner } from '../../../components/UI/Spinner/Spinner';
+import { Input } from '../../../components/UI/Input/Input';
 
 export const ContactData = ({ ingredients, price, history }) => {
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState({
-    name: '',
-    email: '',
-    address: {
-      street: '',
-      postalCode: '',
+
+  const [orderForm, setOrderForm] = useState({
+    name: {
+      elementType: 'input',
+      value: '',
+      placeholder: 'Name',
+    },
+    email: {
+      elementType: 'input',
+      value: '',
+      placeholder: 'Email',
+    },
+    street: {
+      elementType: 'input',
+      value: '',
+      placeholder: 'Street',
+    },
+    zipCode: {
+      elementType: 'input',
+      value: '',
+      placeholder: 'Zip Code',
+    },
+    country: {
+      elementType: 'input',
+      value: '',
+      placeholder: 'Country',
     },
   });
 
@@ -23,12 +44,12 @@ export const ContactData = ({ ingredients, price, history }) => {
       price,
       devliveryMethod: 'fast',
       customer: {
-        name: 'Mr Costumer',
-        email: 'costumer@email.com',
+        name: orderForm.name,
+        email: orderForm.email,
         address: {
-          street: 'Street n1',
-          zipCode: '41314',
-          country: 'Ireland',
+          street: orderForm.street,
+          zipCode: orderForm.zipCode,
+          country: orderForm.country,
         },
       },
     };
@@ -45,30 +66,27 @@ export const ContactData = ({ ingredients, price, history }) => {
 
   let form = (
     <form>
-      <input
-        className={classes.Input}
-        type="text"
-        name="name"
-        placeholder="John Doe"
-      />
-      <input
-        className={classes.Input}
-        type="text"
-        name="email"
-        placeholder="john.doe@email.com"
-      />
-      <input
-        className={classes.Input}
-        type="text"
-        name="street"
-        placeholder="Street"
-      />
-      <input
-        className={classes.Input}
-        type="text"
-        name="postal"
-        placeholder="Postal Code"
-      />
+      {Object.keys(orderForm).map(formField => {
+        const onInputHandler = event => {
+          const value = event.target.value;
+          setOrderForm(prevState => ({
+            ...prevState,
+            [formField]: value,
+          }));
+        };
+
+        const inputtype = orderForm[formField].elementType;
+        const placeholder = orderForm[formField].placeholder;
+
+        return (
+          <Input
+            inputtype={inputtype}
+            placeholder={placeholder}
+            onInput={onInputHandler}
+          />
+        );
+      })}
+
       <Button success clicked={orderHandler}>
         ORDER
       </Button>

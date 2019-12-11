@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Ingredient.module.css';
+import classes from './Ingredient.module.scss';
 import PropTypes from 'prop-types';
 
 const INGREDIENT_TYPES = {
