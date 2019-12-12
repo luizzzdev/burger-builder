@@ -3,6 +3,8 @@ language: node_js
 node_js:
   - 10
 
+dist: trusty
+
 jobs:
   include:
     - stage: test
@@ -21,3 +23,12 @@ jobs:
           branch: master
         target_branch: gh-pages
         local_dir: build
+
+addons:
+  sonarcloud:
+    organization: "luizzzdev"
+    token:
+      secure: $SONAR_TOKEN
+
+script:
+  - sonar-scanner
