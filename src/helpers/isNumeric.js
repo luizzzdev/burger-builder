@@ -1,10 +1,7 @@
 /**
- * @param {string} possibleNumber
+ * @param possibleNumber
  * @returns {boolean}
  */
 export default possibleNumber => {
-  return (
-    typeof possibleNumber === 'number' || typeof +possibleNumber === 'number'
-  );
+  return typeof possibleNumber === 'number' || !isNaN(+possibleNumber);
 };
-

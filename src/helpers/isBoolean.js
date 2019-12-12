@@ -1,8 +1,12 @@
 /**
  *
- * @param {string} possibleBoolean
+ * @param possibleBoolean
  * @returns {boolean}
  */
 export default possibleBoolean => {
-  return possibleBoolean === 'true' || possibleBoolean === 'false'
-}
+  return (
+    typeof possibleBoolean === 'boolean' ||
+    possibleBoolean === 'true' ||
+    possibleBoolean === 'false'
+  );
+};

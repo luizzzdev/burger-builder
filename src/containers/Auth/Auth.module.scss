@@ -1,0 +1,24 @@
+.Auth {
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  box-sizing: border-box;
+  padding: 20px;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid #eee;
+}
+
+@media (min-width: 1000px) {
+  .Form {
+    width: 40%;
+  }
+}
