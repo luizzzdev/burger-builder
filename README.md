@@ -1,3 +1,5 @@
+<a href="https://codecov.io/gh/luizzzdev/burger-builder/branch/master/" title="Codecov"><img src="https://codecov.io/gh/luizzzdev/burger-builder/branch/master/graph/badge.svg"/></a>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
