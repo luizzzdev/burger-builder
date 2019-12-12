@@ -13,9 +13,9 @@ const defaultBurger = {
 
 export const Checkout = props => {
   const [ingredients, setIngredients] = useState(defaultBurger);
-  const [price, setprice] = useState(0);
+  const [price, setPrice] = useState(0);
 
-  useEffect(() => {
+  useEffect((props) => {
     const params = parseURLParams(props.location.search);
 
     setIngredients({
@@ -25,7 +25,7 @@ export const Checkout = props => {
       bacon: params['bacon'],
     });
 
-    setprice(params['price']);
+    setPrice(params['price']);
   }, []);
 
   const checkoutCanceledHandler = () => {
