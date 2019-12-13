@@ -1,6 +1,7 @@
 import React from 'react';
 import { Aux } from '../../../hoc/Aux/Aux';
 import { Button } from '../../UI/Button/Button';
+import PropTypes from 'prop-types';
 
 export const OrderSummary = ({
   ingredients,
@@ -10,7 +11,7 @@ export const OrderSummary = ({
 }) => {
   const ingredientSummary = Object.keys(ingredients).map(ingredient => {
     return (
-      <li key={ingredient}>
+      <li key={ingredient} className={ingredient}>
         <span style={{ textTransform: 'capitalize' }}>{ingredient}</span>:
         <span> {ingredients[ingredient]}</span>
       </li>
@@ -24,7 +25,9 @@ export const OrderSummary = ({
       <ul>{ingredientSummary}</ul>
       <p>Continue to Checkout?</p>
       <p>
-        <strong>Total price: {price}</strong>
+        <strong>
+          Total price: <span className="Price">{price}</span>
+        </strong>
       </p>
       <Button danger clicked={purchaseCanceled}>
         CANCEL
@@ -34,4 +37,8 @@ export const OrderSummary = ({
       </Button>
     </Aux>
   );
+};
+
+OrderSummary.propTypes = {
+  ingredients: PropTypes.object.isRequired,
 };

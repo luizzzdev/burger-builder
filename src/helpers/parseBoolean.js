@@ -1,8 +1,9 @@
 /**
- * @param {string} boolean
+ * @param possibleBoolean
  * @returns {boolean}
  */
-export default boolean => {
-  if (boolean === 'true') return true;
-  if (boolean === 'false') return false;
+export default possibleBoolean => {
+  if (possibleBoolean === 'true') return true;
+  if (possibleBoolean === 'false') return false;
+  return !!possibleBoolean;
 };
