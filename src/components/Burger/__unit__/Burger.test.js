@@ -18,8 +18,12 @@ describe('Burger', () => {
     expect(wrapper.find(Ingredient).length).toBe(8);
   });
 
-  // bread top and bread bottom
-  it('renders by default 2 ingredients', () => {
+  it('should not break without ingredients', () => {
+    wrapper = shallow(<Burger />);
+    expect(wrapper).toBeTruthy();
+  });
+
+  it('renders by default bread top and bread bottom', () => {
     const ingredients = {
       salad: 0,
       meat: 0,

@@ -4,7 +4,7 @@ import classes from './Burger.module.scss';
 import PropTypes from 'prop-types';
 
 export const Burger = ({ ingredients }) => {
-  let transformedIngredients = Object.keys(ingredients)
+  let transformedIngredients = ((ingredients && Object.keys(ingredients)) || [])
     .map(ingredientKey => {
       return [...Array(ingredients[ingredientKey])].map((_, index) => {
         return <Ingredient key={ingredientKey + index} type={ingredientKey} />;

@@ -17,9 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:coverage": "react-scripts test --coverage --watchAll=true",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
-    "coverage:collect": "codecov"
+    "coverage:collect": "codecov -t de330e86-092e-4112-844d-3bac80f82e3f"
   },
   "eslintConfig": {
     "extends": "react-app"
