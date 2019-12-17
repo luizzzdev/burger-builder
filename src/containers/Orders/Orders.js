@@ -15,14 +15,14 @@ export const Orders = () => {
     fetchOrders();
   }, []);
 
+  const renderedOrders = orders.map(order => (
+    <Order key={order.id} order={order} />
+  ));
+
   return (
     <div className={classes.OrdersTitle}>
       <h1>Orders</h1>
-      <div className={classes.Orders}>
-        {orders.map(order => (
-          <Order key={order.id} order={order} />
-        ))}
-      </div>
+      <div className={classes.Orders}>{renderedOrders}</div>
     </div>
   );
 };

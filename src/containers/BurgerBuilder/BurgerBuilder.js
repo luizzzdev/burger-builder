@@ -5,8 +5,9 @@ import { BuildControls } from '../../components/Burger/BuildControls/BuildContro
 import { Modal } from '../../components/UI/Modal/Modal';
 import { OrderSummary } from '../../components/Burger/OrderSummary/OrderSummary';
 import { Spinner } from '../../components/UI/Spinner/Spinner';
+import transformObjectIntoQueryParams from '../../helpers/transformObjectIntoQueryParams';
 
-const INGREDIENT_PRICES = {
+export const INGREDIENT_PRICES = {
   salad: 0.5,
   bacon: 0.4,
   cheese: 1,
@@ -43,22 +44,14 @@ export class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = async () => {
-    const queryParams = [];
-    for (let ingredient in this.state.ingredients) {
-      queryParams.push(
-        encodeURIComponent(ingredient) +
-          '=' +
-          encodeURIComponent(this.state.ingredients[ingredient])
-      );
-    }
-
-    queryParams.push('price=' + this.state.totalPrice);
-
-    const queryString = queryParams.join('&');
+    const params = {
+      ...this.state.ingredients,
+      price: this.state.totalPrice,
+    };
 
     this.props.history.push({
       pathname: '/checkout',
-      search: '?' + queryString,
+      search: transformObjectIntoQueryParams(params),
     });
   };
 
