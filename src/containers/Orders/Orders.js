@@ -16,7 +16,7 @@ export const Orders = () => {
   }, []);
 
   const renderedOrders = orders.map(order => (
-    <Order key={order.id} order={order} />
+    <Order key={order.id} order={order} className="Order"/>
   ));
 
   return (
