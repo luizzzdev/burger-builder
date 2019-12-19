@@ -42,14 +42,14 @@ export const ContactData = ({ ingredients, price, history }) => {
     const body = {
       ingredients,
       price,
-      devliveryMethod: 'fast',
+      deliveryMethod: 'fast',
       customer: {
-        name: orderForm.name,
-        email: orderForm.email,
+        name: orderForm.name.value,
+        email: orderForm.email.value,
         address: {
-          street: orderForm.street,
-          zipCode: orderForm.zipCode,
-          country: orderForm.country,
+          street: orderForm.street.value,
+          zipCode: orderForm.zipCode.value,
+          country: orderForm.country.value,
         },
       },
     };
@@ -71,7 +71,10 @@ export const ContactData = ({ ingredients, price, history }) => {
           const value = event.target.value;
           setOrderForm(prevState => ({
             ...prevState,
-            [formField]: value,
+            [formField]: {
+              ...prevState[formField],
+              value,
+            },
           }));
         };
 
@@ -80,6 +83,7 @@ export const ContactData = ({ ingredients, price, history }) => {
 
         return (
           <Input
+            key={formField}
             inputtype={inputtype}
             placeholder={placeholder}
             onInput={onInputHandler}

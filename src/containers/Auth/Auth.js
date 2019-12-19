@@ -15,8 +15,8 @@ export const Auth = props => {
     console.log(props);
   };
 
-  const onSignUpHandler = () => {
-    //
+  const onSignUpHandler = props => {
+    console.log(props)
   };
 
   return (

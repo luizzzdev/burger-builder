@@ -11,7 +11,7 @@ describe('Form Validator', () => {
     };
 
     let validaton = FormValidatorService.validate(value);
-    expect(validaton).toMatchObject({ password: '' });
+    expect(validaton).toMatchObject({});
     value.password.value = '';
     validaton = FormValidatorService.validate(value);
     expect(validaton).toMatchObject({ password: 'Required' });
@@ -30,6 +30,6 @@ describe('Form Validator', () => {
     expect(validaton).toMatchObject({ email: 'Invalid email address' });
     value.email.value = 'email@email.com';
     validaton = FormValidatorService.validate(value);
-    expect(validaton).toMatchObject({ email: '' });
+    expect(validaton).toMatchObject({});
   });
 });

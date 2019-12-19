@@ -11,8 +11,6 @@ export const AuthForm = ({ onSubmit, title }) => {
     password: '',
   };
 
-  const formSubmitHandler = event => event.preventDefault();
-
   return (
     <Formik
       initialValues={initialValues}
@@ -31,13 +29,13 @@ export const AuthForm = ({ onSubmit, title }) => {
       }}
       onSubmit={values => onSubmit(values)}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, handleSubmit }) => (
         <Fragment>
           <h1>{title}</h1>
-          <Form className={classes.Form} onSubmit={formSubmitHandler}>
-            <Field type="email" name="email" />
+          <Form className={classes.Form} onSubmit={handleSubmit}>
+            <Field type="email" name="email" placeholder="Email" />
             <ErrorMessage name="email" component="div" />
-            <Field type="password" name="password" />
+            <Field type="password" name="password" placeholder="Password" />
             <ErrorMessage name="password" component="div" />
             <Button type="submit" disabled={isSubmitting} success>
               Submit

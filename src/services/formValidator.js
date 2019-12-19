@@ -6,7 +6,6 @@ export const FormValidatorService = {
 
     return fields.reduce((errors, fieldName) => {
       const field = values[fieldName];
-      errors[fieldName] = '';
       const isEmail = field.type === FORM_FIELD_TYPES.EMAIL;
 
       if (isEmail && !this._validateEmail(field.value)) {
