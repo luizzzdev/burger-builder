@@ -31,7 +31,7 @@ export const AuthForm = ({ onSubmit, title }) => {
     >
       {({ isSubmitting, handleSubmit }) => (
         <Fragment>
-          <h1 role="title">{title}</h1>
+          <h1>{title}</h1>
           <Form className={classes.Form} onSubmit={handleSubmit}>
             <Field type="email" name="email" placeholder="Email" />
             <ErrorMessage name="email" component="div" />

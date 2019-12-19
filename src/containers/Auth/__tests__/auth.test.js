@@ -11,7 +11,6 @@ describe('Auth', () => {
 
     const container = renderWithRouter(Auth);
 
-    expect(container.getByRole('title').innerHTML).toBe('Sign In');
     const emailInput = container.getByPlaceholderText(/email/i);
     fireEvent.input(emailInput, { target: { value: 'luiz@email.com' } });
 
@@ -34,7 +33,6 @@ describe('Auth', () => {
 
     const container = renderWithRouter(Auth);
     container.getByText(/sign up/i).click();
-    expect(container.getByRole('title').innerHTML).toBe('Sign Up');
 
     const emailInput = container.getByPlaceholderText(/email/i);
     fireEvent.input(emailInput, { target: { value: 'luiz@email.com' } });
