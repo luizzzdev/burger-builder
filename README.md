@@ -1,5 +1,9 @@
 <a href="https://codecov.io/gh/luizzzdev/burger-builder/branch/master/" title="Codecov"><img src="https://codecov.io/gh/luizzzdev/burger-builder/branch/master/graph/badge.svg"/></a>
 
+### TODO
+- [ ] Refactor tests to remove enzyme and use only testing-library
+- [ ] Implement Auth functionality
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

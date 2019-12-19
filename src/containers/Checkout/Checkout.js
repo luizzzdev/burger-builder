@@ -3,6 +3,7 @@ import { CheckoutSummary } from '../../components/Order/CheckoutSummary/Checkout
 import { parseURLParams } from '../../helpers';
 import { Route } from 'react-router-dom';
 import { ContactData } from './ContactData/ContactData';
+import { BurgerContext } from '../../context/burgerContext';
 
 const defaultBurger = {
   salad: 0,
@@ -12,28 +13,14 @@ const defaultBurger = {
 };
 
 export const Checkout = props => {
-  const [ingredients, setIngredients] = useState(defaultBurger);
-  const [price, setPrice] = useState(0);
-
-  useEffect(() => {
-    const params = parseURLParams(props.location.search);
-
-    setIngredients({
-      salad: params['salad'],
-      meat: params['meat'],
-      cheese: params['cheese'],
-      bacon: params['bacon'],
-    });
-
-    setPrice(params['price']);
-  }, [props.location.search]);
+  const { ingredients, price } = React.useContext(BurgerContext);
 
   const checkoutCanceledHandler = () => {
     props.history.goBack();
   };
 
   const checkoutContinuedHandler = () => {
-    props.history.replace('/checkout/contact-data');
+    props.history.replace(contactDataRoute);
   };
 
   const contactDataRoute = props.match.path + '/contact-data';

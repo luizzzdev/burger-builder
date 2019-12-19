@@ -20,7 +20,7 @@ export const BuildControls = ({
 }) => (
   <div className={classes.BuildControls}>
     <p>
-      Currente price: <strong>{price.toFixed(2)}</strong>
+      Currente price: <strong data-testid="price">{price.toFixed(2)}</strong>
     </p>
     {controls.map(control => (
       <BuildControl

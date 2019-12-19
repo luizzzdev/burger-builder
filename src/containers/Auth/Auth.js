@@ -3,6 +3,7 @@ import classes from './Auth.module.scss';
 import { Route, Switch } from 'react-router-dom';
 import { AuthForm } from './AuthForm/AuthForm';
 import { Button } from '../../components/UI/Button/Button';
+import { AuthService } from '../../services/auth';
 
 export const Auth = props => {
   const defaultRoute = props.match.path;
@@ -12,11 +13,11 @@ export const Auth = props => {
   const goToSignUp = () => props.history.push(signUpRoute);
 
   const onSignInHandler = props => {
-    console.log(props);
+    AuthService.signIn(props);
   };
 
   const onSignUpHandler = props => {
-    console.log(props)
+    AuthService.signUp(props);
   };
 
   return (
@@ -33,11 +34,11 @@ export const Auth = props => {
       <Switch>
         <Route
           path={signUpRoute}
-          render={() => <AuthForm title="Sign up" onSubmit={onSignUpHandler} />}
+          render={() => <AuthForm title="Sign Up" onSubmit={onSignUpHandler} />}
         />
         <Route
           path={defaultRoute}
-          render={() => <AuthForm title="Sign in" onSubmit={onSignInHandler} />}
+          render={() => <AuthForm title="Sign In" onSubmit={onSignInHandler} />}
         />
       </Switch>
     </div>
