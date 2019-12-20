@@ -1,53 +1,31 @@
 import { Checkout } from '../Checkout';
-import React from 'react';
-import { fireEvent, render, wait } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
-import { Route, Router } from 'react-router-dom';
+import { fireEvent, wait } from '@testing-library/react';
 import { OrdersService } from '../../../services/orders';
+import { renderWithRouter } from '../../../helpers/testHelpers';
+import React from 'react';
 import { BurgerContext } from '../../../context/burgerContext';
 
 jest.mock('../../../services/orders');
-
-const testContext = {
-  ingredients: {
-    salad: 1,
-    bacon: 2,
-    cheese: 3,
-    meat: 4,
-  },
-  price: 10,
-};
-
-export const renderWithRouter = (
-  Component,
-  {
-    route = '/',
-    history = createMemoryHistory({ initialEntries: [route] }),
-  } = {}
-) => {
-  return render(
-    <Router history={history}>
-      <BurgerContext.Provider value={testContext}>
-        <Route component={Component} />
-      </BurgerContext.Provider>
-    </Router>
-  );
-};
 
 describe('Checkout', () => {
   it('renders the contact data only when the order gets confirmed', async () => {
     OrdersService.post.mockImplementationOnce(() => {});
 
-    const ingredients = {
-      salad: 1,
-      bacon: 2,
-      cheese: 3,
-      meat: 4,
+    const burgerContext = {
+      ingredients: {
+        salad: 1,
+        bacon: 2,
+        cheese: 3,
+        meat: 4,
+      },
+      price: 10,
     };
 
-    const history = createMemoryHistory();
-
-    const container = renderWithRouter(Checkout, { history });
+    const container = renderWithRouter(props => (
+      <BurgerContext.Provider value={burgerContext}>
+        <Checkout {...props} />
+      </BurgerContext.Provider>
+    ));
 
     const continueButton = container.getByText(/continue/i);
     continueButton.click();
@@ -72,8 +50,8 @@ describe('Checkout', () => {
 
     await wait(() => [
       expect(OrdersService.post).toHaveBeenCalledWith({
-        ingredients,
-        price: 10,
+        ingredients: burgerContext.ingredients,
+        price: burgerContext.price,
         deliveryMethod: 'fast',
         customer: {
           name: 'Luiz',

@@ -1,10 +1,15 @@
 import { BurgerBuilder } from '../BurgerBuilder';
 import React from 'react';
 import { render } from '@testing-library/react';
+import { BurgerProvider } from '../../../context/burgerContext';
 
 describe('Burger Builder', () => {
   it('i should name this seriously', async () => {
-    const container = render(<BurgerBuilder />);
+    const container = render(
+      <BurgerProvider>
+        <BurgerBuilder />
+      </BurgerProvider>
+    );
 
     container.getByTestId('more-cheese').click();
     container.getByTestId('more-meat').click();

@@ -1,7 +1,7 @@
 import { Auth } from '../Auth';
-import { renderWithRouter } from '../../Checkout/__tests__/checkout.test';
 import { AuthService } from '../../../services/auth';
 import { fireEvent, wait } from '@testing-library/react';
+import { renderWithRouter } from '../../../helpers/testHelpers';
 
 jest.mock('../../../services/auth');
 
