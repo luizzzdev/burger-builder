@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { BurgerProvider } from '../../../context/burgerContext';
 
 describe('Burger Builder', () => {
-  it('i should name this seriously', async () => {
+  it('should add ingredients', async () => {
     const container = render(
       <BurgerProvider>
         <BurgerBuilder />

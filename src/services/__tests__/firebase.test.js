@@ -1,5 +1,5 @@
 import { FirebaseService } from '../firebase';
-import { orderApiResponse, orderResponseParsed } from './orderApiResponse.mock';
+import { orderApiResponse, orderResponseParsed } from '../orderApiResponse.mock';
 
 describe('Firebase Service', () => {
   it('parse properly the response', () => {

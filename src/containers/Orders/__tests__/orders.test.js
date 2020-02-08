@@ -4,7 +4,7 @@ import React from 'react';
 import { Order } from '../../../components/Order/Order';
 import { mount } from 'enzyme';
 import { act } from '@testing-library/react';
-import { orderResponseParsed } from '../../../services/__unit__/orderApiResponse.mock';
+import { orderResponseParsed } from '../../../services/orderApiResponse.mock';
 
 jest.mock('../../../services/orders');
 

@@ -1,6 +1,6 @@
 import { OrdersService } from '../orders';
 import { Api } from '../api';
-import { orderApiResponse, orderResponseParsed } from './orderApiResponse.mock';
+import { orderApiResponse, orderResponseParsed } from '../orderApiResponse.mock';
 
 jest.mock('../api');
 
